@@ -2,6 +2,7 @@ name: hello-world
 
 on:
   push:
+  workflow_dispatch:
 
 jobs:
   standard:
@@ -10,4 +11,5 @@ jobs:
       - name: Debug
         run: |
           echo "Hello world"
-          echo "${{ github.event.repository.name}}; ${{ github.ref_name }}; ${{ github.ref_type }}"
+          echo "${{ github.event.repository.name }}; ${{ github.ref_name }}; ${{ github.ref_type }}"
+
