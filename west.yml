@@ -11,5 +11,10 @@ manifest:
   group-filter:
     - -nrf-bm-internal
 
+  projects:
+    - name: sdk-nrf
+      path: nrf
+      revision: v0.1.0
+
   self:
     path: nrf-bm
