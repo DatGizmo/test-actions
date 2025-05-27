@@ -1,0 +1,15 @@
+# The west manifest file for NCS Bare Metal
+
+manifest:
+  defaults:
+    remote: ncs
+
+  remotes:
+    - name: ncs
+      url-base: https://github.com/nrfconnect
+
+  group-filter:
+    - -nrf-bm-internal
+
+  self:
+    path: nrf-bm
