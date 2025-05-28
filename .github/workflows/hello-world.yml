@@ -1,13 +1,13 @@
 name: hello-world
 
 on:
-  push:
   workflow_dispatch:
     inputs:
       git-ref:
         description: 'Branch, tag or SHA to checkout'
         required: true
         default: 'main'
+  push:
 
 jobs:
   standard:
@@ -21,4 +21,3 @@ jobs:
           echo "${{ github.event.repository.name }}"
           echo "Hello world"
           echo "`basename ${{ github.repository }}`; ${{ github.ref_name }}; ${{ github.ref_type }}"
-
