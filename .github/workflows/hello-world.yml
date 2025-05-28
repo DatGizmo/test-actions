@@ -3,6 +3,11 @@ name: hello-world
 on:
   push:
   workflow_dispatch:
+    inputs:
+      git-ref:
+        description: 'Branch, tag or SHA to checkout'
+        required: true
+        default: 'main'
 
 jobs:
   standard:
