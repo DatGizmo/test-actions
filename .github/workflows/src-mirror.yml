@@ -22,14 +22,9 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-
-  # Tar entire project west workspace, prune, and upload to artifact service.
   standard:
     runs-on: ubuntu-latest
     steps:
-      - name: Set repository name
-        id: repo_name
-        run: echo "REPO_NAME=$(basename ${{ github.repository }})" >> $GITHUB_ENV
       - name: Upload src.tar.gz
         uses: datgizmo/action-src-mirror@add-release-bundle-creation
         with:
@@ -37,7 +32,7 @@ jobs:
           west-update-args: ''
           artifactory-path: >-
             ${{ (github.ref_type != 'tag') &&
-              format('generic-local/internal/{0}/{1}/src.tar.gz', env.REPO_NAME, github.ref_name) ||
-              format('generic-local/external/{0}/{1}/src.tar.gz', env.REPO_NAME, github.ref_name) }}
+              format('generic-local/internal/{0}/{1}/src.tar.gz', github.event.repository.name, github.ref_name) ||
+              format('generic-local/external/{0}/{1}/src.tar.gz', github.event.repository.name, github.ref_name) }}
           artifactory-user: ${{ secrets.COM_NORDICSEMI_FILES_USERNAME }}
           artifactory-pass: ${{ secrets.COM_NORDICSEMI_FILES_PASSWORD }}
