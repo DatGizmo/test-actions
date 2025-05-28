@@ -11,7 +11,12 @@ jobs:
       - name: Debug
         run: |
           echo "${{ toJson(github.event) }}"
+          echo "${{ github.event_name }}"
+          echo "${{ github.ref_type }}"
+          echo "${{ toJson(github.event) }}"
           echo "${{ github.event.repository.name }}"
           echo "Hello world"
           echo "`basename ${{ github.repository }}`; ${{ github.ref_name }}; ${{ github.ref_type }}"
+      - name: Conition
+        if: 
 
